@@ -3,7 +3,6 @@
 
 namespace App\Controller;
 
-
 class WindyController extends AbstractController
 {
     public function cam()
