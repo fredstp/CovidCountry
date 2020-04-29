@@ -25,6 +25,14 @@ class WindyController extends AbstractController
         $countries = [
             'france' => 1228218512,
             'italie' => 1230041254,
+            'espagne' => 1562515414,
+            'angleterre' => 1420893641,
+            'chili' => 1522082167,
+            'japon' => 1460602673,
+            'chine' => 1567484660,
+            'inde' => 1573370357,
+            'mexique' => 1306620907,
+            'suisse' => 1292514349,
 
         ];
         $webcams = [];
