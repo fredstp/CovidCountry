@@ -43,6 +43,7 @@ class WindyController extends AbstractController
 
         return $this->twig->render('Windy/country.html.twig', [
             'webcams' => $webcams,
+
         ]);
     }
 }
