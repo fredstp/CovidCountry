@@ -1,6 +1,39 @@
 {% extends 'layout.html.twig'%}
 {% block content %}
+    <style>
 
-    <iframe src="{{ webcams.Italie }}" ></iframe>
+        body {
+            text-align: center;
+        }
+
+        .rainbow{
+            background-color: #343A40;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px 16px;
+
+        }
+
+        .rainbow-1:hover{
+            background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+            animation:slidebg 5s linear infinite;
+        }
+
+        @keyframes slidebg {
+            to {
+                background-position:20vw;
+            }
+        }
+    </style>
+
+    <h1>Hello Wilde(use)r Confiné(e) !</h1>
+
+    <form method= "post" action= "" >
+        <label for="answer" >Sauras-tu deviner dans quel pays se situe ce paysage ?</label>
+        <input id="answer" name="validation" required>
+        <button class="rainbow rainbow-1">J'ai trouvé !</button>
+    </form>
+    <iframe src="{{ webcams.italie }}" height="600" width = "750"></iframe>
 
 {% endblock %}
