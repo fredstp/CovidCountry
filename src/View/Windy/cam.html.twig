@@ -1,14 +1,7 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
-<<<<<<< HEAD
-    <style>
-        .container{
-            margin-top: 150px;
-        }
 
-        .text-center {
-            text-align: center;
-        }
+    <style>
 
         .rainbow{
             background-color: #343A40;
@@ -24,71 +17,53 @@
             animation:slidebg 5s linear infinite;
         }
 
-        .rainbow-2:hover{
-            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
-            animation:slidebg 2s linear infinite;
-        }
-
-        .rainbow-3:hover{
-            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, red);
-            animation:slidebg 2s linear infinite;
-        }
-
-        .rainbow-4:hover{
-            background-image:     linear-gradient(
-                    to right,
-                    #E7484F,
-                    #F68B1D,
-                    #FCED00,
-                    #009E4F,
-                    #00AAC3,
-                    #732982
-            );
-            animation:slidebg 2s linear infinite;
-        }
-
-        .rainbow-5:hover{
-            background-image:     linear-gradient(
-                    to right,
-                    #E7484F,
-                    #E7484F 16.65%,
-                    #F68B1D 16.65%,
-                    #F68B1D 33.3%,
-                    #FCED00 33.3%,
-                    #FCED00 49.95%,
-                    #009E4F 49.95%,
-                    #009E4F 66.6%,
-                    #00AAC3 66.6%,
-                    #00AAC3 83.25%,
-                    #732982 83.25%,
-                    #732982 100%,
-                    #E7484F 100%
-
-            );
-            animation:slidebg 2s linear infinite;
-        }
-
         @keyframes slidebg {
             to {
                 background-position:20vw;
             }
         }
+
     </style>
 
-    <h1>Hello Wilder Confiné(e) !</h1>
+    <h1>Hello Wilde(use)r Confiné(e) !</h1>
 
-    <form method= "post" action= "" >
+    {% if win %}
+        Gagné !
+    {% endif %}
+
+    <form method="post" action="/windy/check" name="questionform" onsubmit="return validateForm()">
+        <input type="hidden" value="{{ country }}" name="country">
         <label for="answer" >Sauras-tu deviner dans quel pays se situe ce paysage ?</label>
-        <input id="answer" name="validation" required>
+        <input type="text" id="answer" name="answer" class="field-long" required> <span class="error" id="errorname"></span>
         <button class="rainbow rainbow-1">J'ai trouvé !</button>
     </form>
+    <iframe src="{{ iframe_src }}" height="600" width = "750"></iframe>
 
+    <div id="container">
+        <div id="success-box">
+            <div class="dot"></div>
+            <div class="dot two"></div>
+            <div class="face">
+                <div class="eye"></div>
+                <div class="eye right"></div>
+                <div class="mouth happy"></div>
+            </div>
+            <div class="shadow scale"></div>
+            <div class="message"><h1 class="alert">Success!</h1><p>yay, everything is working.</p></div>
+            <button class="button-box"><h1 class="green">continue</h1></button>
+        </div>
+        <div id="error-box">
+            <div class="dot"></div>
+            <div class="dot two"></div>
+            <div class="face2">
+                <div class="eye"></div>
+                <div class="eye right"></div>
+                <div class="mouth sad"></div>
+            </div>
+            <div class="shadow move"></div>
+            <div class="message"><h1 class="alert">Error!</h1><p>oh no, something went wrong.</div>
+            <button class="button-box"><h1 class="red">try again</h1></button>
+        </div>
+    </div>
 
-    <iframe  src="{{ iframe_src }}" height="600" width = "750" ></iframe>
-
-=======
-
-    Voici la vue du jour
-    <iframe src="{{ iframe_src }}" ></iframe>
->>>>>>> c8f987890b87b42fe2469e529923710fa8256b09
 {%  endblock %}
