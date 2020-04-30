@@ -4,6 +4,18 @@
 
         body {
             text-align: center;
+            background-image: url("https://cdn.discordapp.com/attachments/696352374767485018/705350700670124122/maps.png");
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        .title {
+            color: yellow;
+            background-image: url("https://cdn.discordapp.com/attachments/696352374767485018/705371028674707476/Capture_decran_2020-04-30_a_12.49.42.png");
+            max-width: 750px;
+            max-height: 300px;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 90px;
         }
 
         .rainbow{
@@ -20,6 +32,24 @@
             animation:slidebg 5s linear infinite;
         }
 
+        .label {
+            font-size: 25px;
+        }
+
+        .win {
+            font-size: 25px;
+            color: green;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+        }
+
         @keyframes slidebg {
             to {
                 background-position:20vw;
@@ -28,59 +58,30 @@
     </style>
 
     <script>
-    function validateForm()
-    {
-        var name = document.forms["questionform"]["answer"];
-        if (name.value === ""){
-            document.getElementById('errorname').innerHTML="Oups ! Pays incorrect ! Try again !";
-            name.focus();
-            return false;
-        }else{
-            document.getElementById('errorname').innerHTML="";
-        }
-    }
+
     </script>
 
 
-    <h1>Hello Wilde(use)r Confiné(e) !</h1>
+    <div class="title"><h1>Hello Wilde(use)r Confiné(e) ! <br>
+        Prêt(e) à voyager depuis ton canapé ?</h1></div>
 
-{% if win %}
-    Gagné !
-{% endif %}
 
-    <form method="post" action="/windy/check" name="questionform" onsubmit="return validateForm()">
+    {% if win %}
+     <div class="flex">
+        <div class="win">C'est gagné ! Bravo ! Continue de voyager depuis ton canapé !
+        <img src="https://media1.tenor.com/images/ee59326e980dc3b964074f35437a009b/tenor.gif?itemid=5034430">
+        </div>
+     </div>
+    {% endif %}
+
+
+    <form method="post" action="/windy/check" name="questionform">
         <input type="hidden" value="{{ country }}" name="country">
-        <label for="answer" >Sauras-tu deviner dans quel pays se situe ce paysage ?</label>
+        <label class="label" for="answer" >Sauras-tu deviner dans quel pays se situe ce paysage ?</label>
         <input type="text" id="answer" name="answer" class="field-long" required> <span class="error" id="errorname"></span>
-        <button class="rainbow rainbow-1">J'ai trouvé !</button>
+        <button  class=" button rainbow rainbow-1 "  > J'ai trouvé ! </button>
     </form>
-    <iframe src="{{ iframe_src }}" height="600" width = "750"></iframe>
 
-    <div id="container">
-        <div id="success-box">
-            <div class="dot"></div>
-            <div class="dot two"></div>
-            <div class="face">
-                <div class="eye"></div>
-                <div class="eye right"></div>
-                <div class="mouth happy"></div>
-            </div>
-            <div class="shadow scale"></div>
-            <div class="message"><h1 class="alert">Success!</h1><p>yay, everything is working.</p></div>
-            <button class="button-box"><h1 class="green">continue</h1></button>
-        </div>
-        <div id="error-box">
-            <div class="dot"></div>
-            <div class="dot two"></div>
-            <div class="face2">
-                <div class="eye"></div>
-                <div class="eye right"></div>
-                <div class="mouth sad"></div>
-            </div>
-            <div class="shadow move"></div>
-            <div class="message"><h1 class="alert">Error!</h1><p>oh no, something went wrong.</div>
-            <button class="button-box"><h1 class="red">try again</h1></button>
-        </div>
-    </div>
+    <iframe src="{{ iframe_src }}" height="600" width = "750"></iframe>
 
 {% endblock %}
